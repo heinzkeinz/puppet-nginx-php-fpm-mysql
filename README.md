@@ -7,7 +7,8 @@ To get started, run the following commands to update the package lists and insta
 
 Next, clone the Git repository:
 
-    git clone git@github.com:wulff/puppet-drupal.git
+    git clone git://github.com/gabprovencher/puppet-nginx-php-fpm-mysql.git
+    
 
 Before you can run Puppet, you must create a file named `settings.pp` in the `manifests` folder (the folder containing the `sites.pp` file. The file must contain the following settings, which are used in various manifests and templates:
 
