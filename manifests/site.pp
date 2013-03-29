@@ -17,11 +17,9 @@ node 'default' {
   include ntp
   include php
   include memcache
-  include drush
   include mysqltuner
   include tuningprimer
   include mtop
   include htop
-  include munin
   include unzip
 }
