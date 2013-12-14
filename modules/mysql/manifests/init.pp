@@ -15,7 +15,7 @@ class mysql {
       enable => true,
       ensure => running,
       provider => 'upstart',
-      require => File['/lib/init/upstart-job']
+      require => File['/etc/init.d/mysql']
   }
 
   exec {
