@@ -7,5 +7,5 @@ apt-get update
 puppet \
   --verbose \
   --logdest=/var/log/puppet.log \
-  --modulepath=/home/<%= username %>/puppet-drupal/modules/ \
-  /home/<%= username %>/puppet-drupal/manifests/drupal-host.pp 
+  --modulepath=/home/<%= @username %>/puppet-drupal/modules/ \
+  /home/<%= @username %>/puppet-drupal/manifests/drupal-host.pp 
