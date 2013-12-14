@@ -26,7 +26,7 @@ class php {
       notify => Service['php5-fpm'];
     '/etc/php5/conf.d/apc.ini':
       source => 'puppet:///modules/php/apc.ini',
-      require => Package['php-apc'],
+      require => Package['php5-apcu'],
       notify => Service['php5-fpm'];
     '/etc/php5/fpm/php.ini':
       source => 'puppet:///modules/php/php-fpm.ini',
