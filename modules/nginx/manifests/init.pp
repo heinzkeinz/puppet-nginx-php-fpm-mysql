@@ -61,20 +61,12 @@ class nginx {
       ensure => '/etc/nginx/sites-available/default',
       require => File['/etc/nginx/sites-available/default'];
 
-    '/etc/nginx/sites-available/cdn.conf':
-      source => 'puppet:///modules/nginx/cdn.conf',
+    "/etc/nginx/sites-available/${server}.conf":
+      source => "puppet:///modules/nginx/${server}.conf",
       require => Package['nginx-light'],
       notify => Service['nginx'];
-    '/etc/nginx/sites-enabled/cdn.conf':
-      ensure => '/etc/nginx/sites-available/cdn.conf',
-      require => File['/etc/nginx/sites-available/cdn.conf'];
-
-    '/etc/nginx/sites-available/drupal7.conf':
-      source => 'puppet:///modules/nginx/drupal7.conf',
-      require => Package['nginx-light'],
-      notify => Service['nginx'];
-    '/etc/nginx/sites-enabled/drupal7.conf':
-      ensure => '/etc/nginx/sites-available/drupal7.conf',
-      require => File['/etc/nginx/sites-available/drupal7.conf'];
+    "/etc/nginx/sites-enabled/${server}.conf":
+      ensure => "/etc/nginx/sites-available/${server}.conf",
+      require => File["/etc/nginx/sites-available/${server}.conf"];
   }
 }

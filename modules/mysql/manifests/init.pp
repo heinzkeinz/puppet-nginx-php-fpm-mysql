@@ -3,12 +3,19 @@ class mysql {
     ['mysql-common', 'mysql-client', 'mysql-server']:
       ensure => present
   }
+  
+  # Create a symlink to /etc/init/*.conf in /etc/init.d, because Puppet 2.7 looks there incorrectly (see: http://projects.puppetlabs.com/issues/14297)
+  file { '/etc/init.d/mysql':
+    ensure => link,
+    target => '/lib/init/upstart-job',
+  }
 
-  service {
-    'mysql':
+  # Ensure that the service is running.
+  service { 'mysql':
       enable => true,
       ensure => running,
-      require => Package['mysql-server']
+      provider => 'upstart',
+      require => File['/etc/init.d/upstart']
   }
 
   exec {

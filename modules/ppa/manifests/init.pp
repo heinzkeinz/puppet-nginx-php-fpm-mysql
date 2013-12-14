@@ -5,12 +5,12 @@ class ppa {
   }
   exec {
     'ppa-add-repo-php5':
-      command => 'add-apt-repository ppa:nginx/php5',
-      creates => '/etc/apt/sources.list.d/nginx-php5-lucid.list',
+      command => 'add-apt-repository ppa:ondrej/php5',
+      creates => '/etc/apt/sources.list.d/php5-precise.list',
       require => Package['python-software-properties'];
     'ppa-add-repo-stable':
       command => 'add-apt-repository ppa:nginx/stable',
-      creates => '/etc/apt/sources.list.d/nginx-stable-lucid.list',
+      creates => '/etc/apt/sources.list.d/nginx-stable-precise.list',
       require => Package['python-software-properties'];
     'ppa-update':
       command => 'aptitude -y update && touch /root/.ppa-update',

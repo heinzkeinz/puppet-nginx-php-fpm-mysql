@@ -5,18 +5,19 @@ node 'default' {
   import 'settings'
 
   include puppet
-  include ssh
-  include sudo
+  # include ssh
+  # include sudo
   include iptables
-  include cron
+  # include cron
   include ppa
   include system
   include git
   include mysql
+  include mysqltuner
   include nginx
   include ntp
   include php
-  include memcache
+  #include memcache
   include mysqltuner
   include tuningprimer
   include mtop
