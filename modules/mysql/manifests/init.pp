@@ -24,7 +24,6 @@ class mysql {
       refreshonly => true,
       unless => "mysqladmin -uroot -p$mysql_password status",
       command => "mysqladmin -uroot password $mysql_password",
-      require => Package['mtop'] # mtop needs an empty root password
   }
 
   file {

@@ -20,7 +20,6 @@ node 'default' {
   #include memcache
   include mysqltuner
   include tuningprimer
-  include mtop
   include htop
   include unzip
 }
