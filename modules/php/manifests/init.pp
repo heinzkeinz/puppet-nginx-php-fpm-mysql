@@ -5,7 +5,7 @@ class php {
     'php5-cli':
       ensure => present,
       require => Class['ppa'];
-    ['php5-mysql', 'php5-curl', 'php5-fpm', 'php5-gd', 'php5-imagick', 'php5-memcache', 'php-apcu']:
+    ['php5-mysql', 'php5-curl', 'php5-fpm', 'php5-gd', 'php5-imagick', 'php5-memcache', 'php5-apcu']:
       ensure => present,
       require => Package['php5-cli'];
   }
@@ -49,6 +49,6 @@ class php {
       cwd => '/opt',
       command => 'cp /usr/share/doc/php-apc/apc.php.gz . && gunzip apc.php.gz',
       creates => '/opt/apc.php',
-      require => Package['php-apc'];
+      require => Package['php5-apcu'];
   }
 }
