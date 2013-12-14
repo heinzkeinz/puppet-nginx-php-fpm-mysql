@@ -17,7 +17,8 @@ class nginx {
       ensure => directory;
     '/var/www':
       ensure => directory;
-
+     "/var/www/${server}": 
+      ensure => directory;
     '/etc/nginx/nginx.conf':
       source => 'puppet:///modules/nginx/nginx.conf',
       require => Package['nginx-light'],
@@ -38,8 +39,8 @@ class nginx {
       source => 'puppet:///modules/nginx/upstream.conf',
       require => Package['nginx-light'],
       notify => Service['nginx'];
-    '/etc/nginx/sites-available/drupal.conf':
-      source => 'puppet:///modules/nginx/drupal.conf',
+    "/etc/nginx/sites-available/${server}.conf":
+      source => "puppet:///modules/nginx/${server}.conf",
       require => Package['nginx-light'];
     '/etc/nginx/sites-available/admin.conf':
       source => 'puppet:///modules/nginx/admin.conf',
