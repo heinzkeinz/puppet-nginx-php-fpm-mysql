@@ -24,10 +24,10 @@ class php {
       source => 'puppet:///modules/php/php5-fpm.init',
       require => Package['php5-fpm'],
       notify => Service['php5-fpm'];
-    '/etc/php5/conf.d/apc.ini':
-      source => 'puppet:///modules/php/apc.ini',
-      require => Package['php5-apcu'],
-      notify => Service['php5-fpm'];
+    #'/etc/php5/conf.d/apc.ini':
+    #  source => 'puppet:///modules/php/apc.ini',
+    #  require => Package['php5-apcu'],
+    #  notify => Service['php5-fpm'];
     '/etc/php5/fpm/php.ini':
       source => 'puppet:///modules/php/php-fpm.ini',
       require => Package['php5-fpm'],
@@ -47,8 +47,7 @@ class php {
   exec {
     'extract-apc':
       cwd => '/opt',
-      command => 'cp /usr/share/doc/php-apc/apc.php.gz . && gunzip apc.php.gz',
-      creates => '/opt/apc.php',
+      command => 'cp /usr/share/doc/php5-apcu/apc.php /opt/apc.php',
       require => Package['php5-apcu'];
   }
 }
