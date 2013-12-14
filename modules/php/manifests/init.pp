@@ -5,7 +5,7 @@ class php {
     'php5-cli':
       ensure => present,
       require => Class['ppa'];
-    ['php5-mysql', 'php5-curl', 'php5-fpm', 'php5-gd', 'php5-memcache', 'php-apc']:
+    ['php5-mysql', 'php5-curl', 'php5-fpm', 'php5-gd', 'php5-imagick', 'php5-memcache', 'php-apc']:
       ensure => present,
       require => Package['php5-cli'];
   }
@@ -34,6 +34,10 @@ class php {
       notify => Service['php5-fpm'];
     '/etc/php5/fpm/pool.d/www.conf':
       source => 'puppet:///modules/php/www.conf',
+      require => Package['php5-fpm'],
+      notify => Service['php5-fpm'];
+    '/etc/php5/fpm/main.conf':
+      source => 'puppet:///modules/php/main.conf',
       require => Package['php5-fpm'],
       notify => Service['php5-fpm'];
     '/var/run/php5-fpm':
