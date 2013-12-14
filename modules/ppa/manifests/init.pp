@@ -8,9 +8,9 @@ class ppa {
       command => 'add-apt-repository ppa:ondrej/php5',
       creates => '/etc/apt/sources.list.d/php5-precise.list',
       require => Package['python-software-properties'];
-    'ppa-add-repo-php5-apcu':
-      command => 'add-apt-repository ppa:ondrej/php5-apcu',
-      creates => '/etc/apt/sources.list.d/php5-apcu-precise.list',
+    'ppa-add-repo-php-apcu':
+      command => 'add-apt-repository ppa:ondrej/php-apcu',
+      creates => '/etc/apt/sources.list.d/php-apcu-precise.list',
       require => Package['python-software-properties'];
     'ppa-add-repo-nginx-stable':
       command => 'add-apt-repository ppa:nginx/stable',
@@ -19,6 +19,6 @@ class ppa {
     'ppa-update':
       command => 'aptitude -y update && touch /root/.ppa-update',
       creates => '/root/.ppa-update',
-      require => Exec['ppa-add-repo-php5', 'ppa-add-repo-php5-apcu',  'ppa-add-repo-nginx-stable'];
+      require => Exec['ppa-add-repo-php5', 'ppa-add-repo-php-apcu',  'ppa-add-repo-nginx-stable'];
   }
 }
